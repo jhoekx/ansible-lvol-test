@@ -1,0 +1,34 @@
+- name: Remove the logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    state: absent
+    force: yes
+
+- name: Create a deactivated logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    size: 1g
+    active: false ### Broken 2017-01-29
+
+- name: Activate a deactivated logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    size: 1g
+    active: true
+
+- name: Deactivate the activated logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    size: 1g
+    active: false
+
+- name: Remove the logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    state: absent
+    force: yes

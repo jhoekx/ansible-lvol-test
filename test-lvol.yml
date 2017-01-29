@@ -1,0 +1,11 @@
+---
+
+- name: Test lvol module
+  hosts: lvm-test
+  become: yes
+
+  tasks:
+  - include: test-lvol-basic.yml
+  - include: test-lvol-active.yml
+#  - include: test-lvol-thin.yml
+  - include: test-lvol-snapshot.yml

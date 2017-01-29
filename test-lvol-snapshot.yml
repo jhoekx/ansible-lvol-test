@@ -1,0 +1,26 @@
+- name: Remove the logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    state: absent
+    force: yes
+
+- name: Create a normal logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    size: 512
+
+- name: Create a snapshot of the volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    snapshot: snap1
+    size: 100
+
+- name: Remove the logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test
+    state: absent
+    force: yes

@@ -1,0 +1,47 @@
+- name: Remove the thin logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: thin-test
+    state: absent
+    force: yes
+
+- name: Remove the thin pool
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test-pool
+    state: absent
+    force: yes
+
+- name: Create a thin pool
+  lvol:
+    vg: "{{ test_vg }}"
+    thinpool: test-pool
+    size: 4g
+
+- name: Create a volume in the thin pool
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: thin-test
+    thinpool: test-pool
+    size: 1g
+
+- name: Resize the volume in the thin pool
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: thin-test
+    thinpool: test-pool
+    size: 6g
+
+- name: Remove the thin logical volume
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: thin-test
+    state: absent
+    force: yes
+
+- name: Remove the thin pool
+  lvol:
+    vg: "{{ test_vg }}"
+    lv: test-pool
+    state: absent
+    force: yes
